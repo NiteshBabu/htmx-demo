@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script type="module" src="script.js" defer></script> -->
+    <title>HTMX Demo</title>
+  </head>
+  <body>
+    <div
+      class="flex flex-col items-center h-screen w-full bg-slate-900 text-white p-4"
+    >
+      <!-- <button class="p-4 bg-green-500 rounded-xl" hx-get="https://jsonplaceholder.typicode.com/users" hx-target="#users">Click Me</button> -->
+      <button
+        class="p-4 bg-green-500 rounded-xl"
+        hx-get="http://localhost:3000/users"
+        hx-target="#users"
+      >
+        Get Users
+      </button>
+
+      <div id="users"></div>
+
+      <form id="form" class="my-4" hx-post="https://localhost:3000/info">
+        <h2 class="text-2xl my-4">Form Checking</h2>
+        <div class="my-4">
+          <input
+            name="email"
+            class="p-2 w-80 h-10 rounded border-green-500 text-black"
+            type="email"
+            placeholder="nick@gmail.com"
+            hx-get="http://localhost:3000/check"
+            hx-trigger="keyup delay:1000"
+            hx-target="#email"
+          />
+          <span id="email" class="my-2 inline-block"></span>
+        </div>
+        <div class="my">
+          <input
+            type="text"
+            name="mobile"
+            class="p-2 w-80 h-10 rounded border-green-500 text-black"
+            type="text"
+            placeholder="700-414-4140"
+            hx-get="http://localhost:3000/check"
+            hx-trigger="keyup delay:1000"
+            hx-target="#mobile"
+          />
+          <span id="mobile" class="my-2 inline-block"></span>
+        </div>
+        <button class="border rounded p-2 mx-auto my-4 bg-blue-500 block">
+          Submit
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
